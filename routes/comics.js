@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const md5 = require("md5");
+const axios = require("axios");
 
 //All calls to the Marvel Comics API must pass your public key via an “apikey” parameter.
 const marvel_api_private_key = process.env.PRIVATE_KEY

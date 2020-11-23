@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const md5 = require("md5");
+const axios = require("axios");
 
 //C'est ma home page qui affiche tous les personnages (100 par page) :
 //   --   Nous avons besoin d'envoyer page et le numero de page :
