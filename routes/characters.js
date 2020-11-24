@@ -3,13 +3,14 @@ const router = express.Router();
 const md5 = require("md5");
 const axios = require("axios");
 
+const marvel_api_private_key = process.env.PRIVATE_KEY
+const apikey = process.env.PUBLIC_KEY
+
 //C'est ma home page qui affiche tous les personnages (100 par page) :
 //   --   Nous avons besoin d'envoyer page et le numero de page :
 router.get("/characters", async (req, res) => {
   console.log("acces route characters");
 
-    const marvel_api_private_key = process.env.PRIVATE_KEY
-    const apikey = process.env.PUBLIC_KEY
 
     const page = req.query.page;
     try {
@@ -30,7 +31,8 @@ router.get("/characters", async (req, res) => {
   });
 
   //Page comics par personnage : affiches les comics en lien avec un personnage choisi
-router.get("/character/:id", async (req, res) => {
+  router.get("/character/:id", async (req, res) => {
+    console.log("acces route character");
   const id = Number(req.params.id);
 
     const date = new Date();
@@ -63,7 +65,5 @@ router.get("/character/1011766", async (req, res) => {
 const response = await axios.get(`https://gateway.marvel.com:443/v1/public/characters/${character_id}?ts=${ts}&apikey=${apikey}&hash=${hash}`)
 res.json(response.data)
 })
-
-
 
   module.exports = router;

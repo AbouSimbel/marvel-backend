@@ -18,7 +18,7 @@ mongoose.connect(process.env.MOGODB_URI, {
   useCreateIndex: true
 });
 
-const userRoutes = require("./routes/user");
+const userRoutes = require("./routes/user.js");
 const characterRoutes = require("./routes/characters");
 const comicsRoutes = require("./routes/comics");
 app.use(userRoutes);
